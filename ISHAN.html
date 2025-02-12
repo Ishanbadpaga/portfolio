@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #1a1a2e;
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      animation: fadeInDown 2s ease;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 2s ease;
+    }
+
+    header a {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      color: #fff;
+      background: #6c63ff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    header a:hover {
+      background: #5653d4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      background: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #6c63ff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #about {
+      background: #16213e;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #about p {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    #skills {
+      background: #1f4068;
+    }
+
+    #filter-buttons {
+      margin-bottom: 2rem;
+    }
+
+    #filter-buttons button {
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background: #6c63ff;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    #filter-buttons button:hover {
+      background: #5653d4;
+    }
+
+    .skills-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #0f3460;
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill:hover {
+      transform: translateY(-10px);
+    }
+
+    .skill img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .skill span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    #projects {
+      background: #0f3460;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      background: #16213e;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+    }
+
+    .project img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .contact {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: left;
+    }
+
+    .contact label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      padding: 0.8rem 2rem;
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .contact button:hover {
+      background: #5653d4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0f0c29;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+<figure>
+  <figcaption>Listen to the T-Rex:</figcaption>
+  <audio controls src="/media/cc0-audio/old.mp3"></audio>
+  <a href="/media/cc0-audio/old.mp3"> Download audio </a>
+</figure>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Hello, I'm [ISHAN KUMAR BADPAGA]</h1>
+    <p>Aspiring Android Developer | Tech Enthusiast</p>
+    <a href="#about">Learn More</a>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a passionate software engineer dedicated to building impactful solutions and constantly learning new technologies. With a focus on app development, I aim to craft seamless user experiences.</p>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div id="filter-buttons">
+      <button onclick="filterSkills('all')">All</button>
+      <button onclick="filterSkills('frontend')">Frontend</button>
+      <button onclick="filterSkills('backend')">Backend</button>
+      <button onclick="filterSkills('tools')">Tools</button>
+    </div>
+    <div class="skills-container">
+      <div class="skill" data-category="frontend">
+        <img src="https://img.icons8.com/color/48/html-5--v1.png" alt="HTML icon">
+        <span>HTML & JAVA</span>
+      </div>
+      <div class="skill" data-category="frontend">
+        <img src="https://img.icons8.com/color/48/javascript--v1.png" alt="JavaScript icon">
+        <span>Java</span>
+      </div>
+      <div class="skill" data-category="frontend">
+        <img src="https://img.icons8.com/color/48/react-native.png" alt="React icon">
+        <span>NO</span>
+      </div>
+      <div class="skill" data-category="backend">
+        <img src="https://img.icons8.com/color/48/nodejs.png" alt="Node.js icon">
+        <span>NO</span>
+      </div>
+      <div class="skill" data-category="backend">
+        <img src="https://img.icons8.com/color/48/python--v1.png" alt="Python icon">
+        <span>Python</span>
+      </div>
+      <div class="skill" data-category="tools">
+        <img src="https://img.icons8.com/color/48/github--v1.png" alt="Git & GitHub icon">
+        <span>Git & GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project">
+        <img src="https://via.placeholder.com/300" alt="Project 1">
+        <h3>Project 1</h3>
+        <p>Short description of the project goes here.</p>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/300" alt="Project 2">
+        <h3>Project 2</h3>
+        <p>Short description of the project goes here.</p>
+		
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/300" alt="Project 3">
+        <h3>Project 3</h3>
+        <p>Short description of the project goes here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Your Email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function filterSkills(category) {
+      const skills = document.querySelectorAll('.skill');
+      skills.forEach(skill => {
+        if (category === 'all' || skill.dataset.category === category) {
+          skill.style.display = 'flex';
+        } else {
+          skill.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
